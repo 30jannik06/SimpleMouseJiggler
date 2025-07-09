@@ -1,0 +1,36 @@
+﻿name: Build & Release Win-x64
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'    # z. B. v1.0.0
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 9
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Publish self-contained win-x64
+      run: dotnet publish -c Release -r win-x64 --self-contained true -o ./publish
+
+    - name: Zip published files
+      run: Compress-Archive -Path ./publish/* -DestinationPath ./SimpleMouseJiggler-win-x64.zip
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: ./SimpleMouseJiggler-win-x64.zip
