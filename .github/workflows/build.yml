@@ -1,0 +1,35 @@
+name: .NET WinForms Build & Publish
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 9.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build (Release)
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Publish self-contained win-x64
+      run: dotnet publish -c Release -r win-x64 --self-contained true -o ./publish
+
+    - name: Upload Published Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: SimpleMouseJiggler-win-x64
+        path: ./publish
