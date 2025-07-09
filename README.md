@@ -1,5 +1,7 @@
 ﻿# 🖱️ SimpleMouseJiggler
 
+[![.NET WinForms Build & Publish](https://github.com/30jannik06/SimpleMouseJiggler/actions/workflows/build.yml/badge.svg)](https://github.com/30jannik06/SimpleMouseJiggler/actions/workflows/build.yml)
+
 A simple Windows Forms app that prevents your machine from going idle by moving the mouse slightly at configurable intervals.
 
 ## ✨ Features
