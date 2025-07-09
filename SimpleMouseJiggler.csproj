@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -6,9 +6,10 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>preview</LangVersion>
 		<PublishSingleFile>true</PublishSingleFile>
 		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-		<LangVersion>preview</LangVersion>
+		<ApplicationIcon>jiggler.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>

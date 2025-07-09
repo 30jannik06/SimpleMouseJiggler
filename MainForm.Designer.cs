@@ -28,10 +28,18 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "Form1";
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+        SuspendLayout();
+        // 
+        // MainForm
+        // 
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(800, 450);
+        Icon = (Icon)resources.GetObject("$this.Icon");
+        Name = "MainForm";
+        Text = "Form1";
+        ResumeLayout(false);
     }
 
     #endregion
